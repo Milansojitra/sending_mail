@@ -9,11 +9,11 @@ def contactView(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, 'ashish23d@gmail.com', ['milansojitra1019@gmail.com'])
+                send_mail("",f'name : {name} \nemail : {email}\nmessage : {message}', 'ashish23d@gmail.com', ['milansojitra1019@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('please check your data.')
             return HttpResponse('success')
